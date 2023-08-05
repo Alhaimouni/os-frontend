@@ -1,0 +1,89 @@
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+.header {
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid rgb(231, 231, 231);
+}
+
+.header > .container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row nowrap;
+  align-items: center;
+
+}
+
+.header > .container > div:first-child {
+  font-weight: 800;
+  font-size: 30px;
+}
+.header > .container > div:first-child span:first-child {
+  color: rgb(35, 128, 192);
+}
+.header > .container > div:first-child span:last-child {
+  color: rgb(137, 192, 61);
+}
+
+.header > .container > div:last-child nav ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+}
+.header > .container > div:last-child nav ul li {
+  margin-right: 1.5rem;
+}
+
+.header > .container > div:last-child nav ul li a {
+  text-decoration: none;
+  position: relative;
+  color: rgb(35, 128, 192);
+  font-weight: 500;
+}
+.header > .container > div:last-child nav ul li a::before {
+  content: "";
+  width: 0;
+  height: 2px;
+  background-color: rgb(137, 192, 61);
+  position: absolute;
+  bottom: -8px;
+  transition-duration: 0.3s;
+  transition-property: width;
+}
+
+.header > .container > div:last-child nav ul li a[class="active"] {
+  color: rgb(137, 192, 61);
+}
+.header > .container > div:last-child nav ul li a[class="active"]::before {
+  width: 100%;
+}
+
+.header > .container > div:last-child nav ul li a:hover::before {
+  width: 100%;
+}

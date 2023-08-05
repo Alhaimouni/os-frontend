@@ -1,25 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import HeaderComponent from "./components/Header/HeaderComponent";
+import FooterComponent from "./components/Footer/FooterComponent";
+import MainPage from "./pages/Main/MainPage";
+import FavoritePage from "./pages/Favorite/FavoritePage";
+import RegisterPage from "./pages/Register/RegisterPage";
+import { useContext } from "react";
+import { UserContext } from "./contexts/UserContext";
 
 function App() {
+  // const {user} = useContext(UserContext);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <HeaderComponent />
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/favorite" element={<FavoritePage />} />
+          <Route path="/register" element={<RegisterPage />} />
+        </Routes>
+        <FooterComponent />
+      </BrowserRouter>
+    </>
   );
 }
 
