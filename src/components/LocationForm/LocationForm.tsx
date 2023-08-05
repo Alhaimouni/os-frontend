@@ -29,12 +29,13 @@ const LocationForm: React.FC = () => {
     setWeatherData(null);
     axios
       .get(
-        `https://opensooq-web-api.onrender.com/weather?lon=${longitude}&lat=${latitude}`,
+        // `https://opensooq-web-api.onrender.com/weather?lon=${longitude}&lat=${latitude}`,
+        `http://localhost:3004/weather?lon=${longitude}&lat=${latitude}`,
         {
-          headers: {
-            //admin token just incase if we want to make the authorized user to get the data
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImlhdCI6MTY5MTE4MTk4MX0.nit4mdsP3DsJCWVTda9CE0QWuxbiA57uzpClKAgoHDA`,
-          },
+          // headers: {
+          //   //admin token just incase if we want to make the authorized user to get the data
+          //   Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImlhdCI6MTY5MTE4MTk4MX0.nit4mdsP3DsJCWVTda9CE0QWuxbiA57uzpClKAgoHDA`,
+          // },
         }
       )
       .then((response) => {

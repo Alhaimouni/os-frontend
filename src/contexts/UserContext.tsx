@@ -1,20 +1,28 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState } from "react";
 
 interface UserData {
-  username: string;
   email: string;
-  // Add other user-related properties as needed
+  token: string;
+  role: string;
 }
 
 interface UserContextType {
-  user: UserData | null;
-  setUser: (userData: UserData | null) => void;
+  user: any | null;
+  setUser: (userData: any | UserData | null) => void;
 }
+let k = localStorage.getItem("user");
+let loggedUser = JSON.parse(k as string);
+let initialUserData: any;
 
-const initialUserData: UserData = {
-  username: '',
-  email: '',
-};
+if (loggedUser) {
+  initialUserData = {
+    email: loggedUser.email,
+    token: loggedUser.token,
+    role: loggedUser.role,
+  };
+} else {
+  initialUserData = null;
+}
 
 const UserContext = createContext<UserContextType>({
   user: initialUserData,
@@ -26,9 +34,13 @@ interface UserProviderProps {
 }
 
 const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
-  const [user, setUser] = useState<UserData | null>(null);
+  const [user, setUser] = useState<any | null>(initialUserData);
 
-  return <UserContext.Provider value={{ user, setUser }}>{children}</UserContext.Provider>;
+  return (
+    <UserContext.Provider value={{ user, setUser }}>
+      {children}
+    </UserContext.Provider>
+  );
 };
 
 export { UserContext, UserProvider };

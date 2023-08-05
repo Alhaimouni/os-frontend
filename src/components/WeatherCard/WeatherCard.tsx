@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import styles from "./WeatherCard.module.css";
-import { WeatherCardContext } from "../../contexts/WeatherCardContext";
+import { When } from "react-if";
+import { UserContext } from "../../contexts/UserContext";
+import axios from "axios";
 
 interface WeatherCardProps {
   weatherData: {
@@ -30,16 +32,46 @@ interface WeatherCardProps {
 }
 
 const WeatherCard: React.FC<WeatherCardProps> = ({ weatherData }) => {
-  const {} = useContext(WeatherCardContext);
+  const { user } = useContext(UserContext);
 
   return (
     <div className={styles.card}>
-      <h2>Weather Details</h2>
+      <h2 style={{ textAlign: "left" }}>Weather Details</h2>
       <p>Location: {weatherData.name}</p>
       <p>Description: {weatherData.weather[0].description}</p>
       <p>Temperature: {weatherData.main.temp} °F</p>
       <p>Humidity: {weatherData.main.humidity}%</p>
       <p>Wind Speed: {weatherData.wind.speed} m/s</p>
+      <When
+        condition={user}
+        children={
+          <button
+            onClick={() => {
+              axios
+                .post(
+                  `https://opensooq-web-api.onrender.com/weather/fav`,
+                  {
+                    weather: weatherData.weather[0].description,
+                    visibility: weatherData.main.humidity,
+                  },
+                  {
+                    headers: {
+                      authorization: `Bearer ${user.token}`,
+                    },
+                  }
+                )
+                .then((resolve) => {
+                  console.log(resolve.data);
+                })
+                .catch((reject) => {
+                  console.log(reject);
+                });
+            }}
+          >
+            Add To Favorate
+          </button>
+        }
+      />
     </div>
   );
 };
