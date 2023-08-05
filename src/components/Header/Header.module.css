@@ -59,14 +59,17 @@
 .header > .container > div:last-child nav ul li {
   margin-right: 1.5rem;
 }
-
-.header > .container > div:last-child nav ul li a {
+.header > .container > div:last-child nav ul li p {
+  margin:0;
+  padding:0;
+}
+.header > .container > div:last-child nav ul li a,.header > .container > div:last-child nav ul li p {
   text-decoration: none;
   position: relative;
   color: rgb(35, 128, 192);
   font-weight: 500;
 }
-.header > .container > div:last-child nav ul li a::before ,.header > .container > div:last-child nav ul li p::before {
+.header > .container > div:last-child nav ul li a::before{
   content: "";
   width: 0;
   height: 2px;
