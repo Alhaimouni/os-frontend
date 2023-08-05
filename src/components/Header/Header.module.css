@@ -66,7 +66,7 @@
   color: rgb(35, 128, 192);
   font-weight: 500;
 }
-.header > .container > div:last-child nav ul li a::before {
+.header > .container > div:last-child nav ul li a::before ,.header > .container > div:last-child nav ul li p::before {
   content: "";
   width: 0;
   height: 2px;
@@ -84,6 +84,6 @@
   width: 100%;
 }
 
-.header > .container > div:last-child nav ul li a:hover::before {
+.header > .container > div:last-child nav ul li p:hover::before {
   width: 100%;
 }
