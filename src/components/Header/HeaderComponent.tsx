@@ -43,10 +43,10 @@ function HeaderComponent() {
                     onClick={() => {
                       localStorage.clear();
                       navigate("/register");
-                      window.location.reload();
+                      // window.location.reload();
                     }}
                   >
-                    <a>Logout</a>
+                    <p>Logout</p>
                   </li>
                 }
               />
