@@ -62,6 +62,8 @@
 .header > .container > div:last-child nav ul li p {
   margin:0;
   padding:0;
+  cursor: pointer;
+   transition-duration: 0.3s;
 }
 .header > .container > div:last-child nav ul li a,.header > .container > div:last-child nav ul li p {
   text-decoration: none;
@@ -87,6 +89,6 @@
   width: 100%;
 }
 
-.header > .container > div:last-child nav ul li p:hover::before {
-  width: 100%;
+.header > .container > div:last-child nav ul li p:hover {
+  color:red;
 }
